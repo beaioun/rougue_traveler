@@ -53,9 +53,13 @@ if origin_city and budget and start_date and end_date:
                 with st.spinner("Planning your perfect trip..."):
                     # Call the API endpoint and the response is a JSON object
                     response = suggest_destinations(  origin_city, duration)
-                    print( response )
-                    response_json = json.loads(response)
-                    
+
+#                    st.write(dir(response))
+
+                    response = json.loads(response.text)
+                    st.write(response)
+
+
                     for i in range(len(response['destinations'])):
                         with st.container(border=True):
                             st.write(response.get('destinations')[i].values())
