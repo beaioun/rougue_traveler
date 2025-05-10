@@ -15,6 +15,7 @@ def suggest_destinations(origin_location, number_of_locs):
     # open_key = os.getenv("OPENAI_API_KEY")
     # For testing purposes, you can set the API key directly
     #
+    print("origin_location", origin_location)
     open_key = keys.open_api_key
     # Create an llm object to use for the QueryEngine and the ReActAgent
     llm = OpenAI(model="gpt-4o-mini", api_key=open_key)
@@ -34,3 +35,4 @@ def suggest_destinations(origin_location, number_of_locs):
     Rodeo, Kansas City"""
 
     response_locations = llm.complete(prompt = locationgen_str, response_format={ "type": "json_object" })
+    return response_locations

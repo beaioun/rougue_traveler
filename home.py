@@ -4,6 +4,7 @@ import streamlit as st
 import openai
 from datetime import datetime, timedelta
 import os
+import json
 
 # Configure OpenAI API using Streamlit secrets
 # openai.api_key = st.secrets["OPENAI_API_KEY"]
@@ -24,7 +25,7 @@ with st.sidebar:
     st.header("Trip Details")
     
     # Origin city input
-    origin_city = st.text_input("Origin City", placeholder="e.g. Seattle, WA")
+    origin_city = st.text_input("Origin City", placeholder="e.g. Seattle, WA", value="Seattle, WA")
     
     # Budget input
     budget = st.number_input("Budget (USD)", min_value=0, step=100, value=1000)
@@ -52,6 +53,8 @@ if origin_city and budget and start_date and end_date:
                 with st.spinner("Planning your perfect trip..."):
                     # Call the API endpoint and the response is a JSON object
                     response = suggest_destinations(  origin_city, duration)
+                    print( response )
+                    response_json = json.loads(response)
                     
                     for i in range(len(response['destinations'])):
                         with st.container(border=True):
