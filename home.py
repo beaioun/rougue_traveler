@@ -51,18 +51,41 @@ if origin_city and budget and start_date and end_date:
             
             try:
                 with st.spinner("Planning your perfect trip..."):
-                    # Call OpenAI API
-                    response = openai.chat.completions.create(
-                        model="gpt-3.5-turbo",
-                        messages=[
-                            {"role": "system", "content": "You are a knowledgeable travel agent with expertise in budget travel planning."},
-                            {"role": "user", "content": prompt}
-                        ]
-                    )
+                    # Call the API endpoint and the response is a JSON object
+                    response = {
+                                "destinations": [
+                                    {
+                                    "location": "Winthrop, WA",
+                                    "airport_code": "SEA"
+                                    },
+                                    {
+                                    "location": "Astoria, OR",
+                                    "airport_code": "PDX"
+                                    },
+                                    {
+                                    "location": "Rodeo, KS",
+                                    "airport_code": "MHK"
+                                    },
+                                    {
+                                    "location": "Sandpoint, ID",
+                                    "airport_code": "SFF"
+                                    },
+                                    {
+                                    "location": "Port Townsend, WA",
+                                    "airport_code": "SEA"
+                                    }
+                                ]
+                                }
                     
+                    for i in range(len(response['destinations'])):
+                        with st.container(border=True):
+                            st.write(response.get('destinations')[i].values())
+                            city_details = st.button("details", key=f"city_details_{i}")
                     # Display the response
-                    st.markdown("### Your Personalized Travel Plan")
-                    st.write(response.choices[0].message.content)
+                    if city_details:
+                        # TODO: a function to get the itenary for the city
+                        st.write(response.get('destinations')[i].values())
+
                     
             except Exception as e:
                 st.error(f"An error occurred: {str(e)}")
