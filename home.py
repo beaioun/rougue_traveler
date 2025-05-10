@@ -1,4 +1,5 @@
 import location_images
+from prompt1 import suggest_destinations
 import streamlit as st
 import openai
 from datetime import datetime, timedelta
@@ -46,37 +47,11 @@ if origin_city and budget and start_date and end_date:
     else:
         # Prepare the prompt for OpenAI
         if generate:
-            prompt = f"""
-            
-            """
             
             try:
                 with st.spinner("Planning your perfect trip..."):
                     # Call the API endpoint and the response is a JSON object
-                    response = {
-                                "destinations": [
-                                    {
-                                    "location": "Winthrop, WA",
-                                    "airport_code": "SEA"
-                                    },
-                                    {
-                                    "location": "Astoria, OR",
-                                    "airport_code": "PDX"
-                                    },
-                                    {
-                                    "location": "Rodeo, KS",
-                                    "airport_code": "MHK"
-                                    },
-                                    {
-                                    "location": "Sandpoint, ID",
-                                    "airport_code": "SFF"
-                                    },
-                                    {
-                                    "location": "Port Townsend, WA",
-                                    "airport_code": "SEA"
-                                    }
-                                ]
-                                }
+                    response = suggest_destinations(  origin_city, duration)
                     
                     for i in range(len(response['destinations'])):
                         with st.container(border=True):
