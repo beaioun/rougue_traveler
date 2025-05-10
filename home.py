@@ -22,14 +22,16 @@ with st.sidebar:
     st.header("Trip Details")
     
     # Origin city input
-    origin_city = st.text_input("Origin City", placeholder="e.g., New York")
+    origin_city = st.text_input("Origin City", placeholder="e.g. Seattle, WA")
     
     # Budget input
     budget = st.number_input("Budget (USD)", min_value=0, step=100, value=1000)
+
+    rogueness = st.slider("Rogueness", min_value=0, max_value=10, value=5)
     
     # Date inputs
     start_date = st.date_input("Start Date", min_value=datetime.now().date())
-    end_date = st.date_input("End Date", min_value=start_date)
+    end_date = st.date_input("End Date", min_value=start_date + timedelta(days=3))
 
     generate = st.button("Generate Trip Plan", key="generate")
 
@@ -64,8 +66,13 @@ if origin_city and budget and start_date and end_date:
                     
             except Exception as e:
                 st.error(f"An error occurred: {str(e)}")
+            
+            if st.button("Clear and Start Over"):
+                st.rerun()
 else:
     st.info("Please fill in all the trip details in the sidebar to get started!")
+
+
 
 # Footer
 st.markdown("---")
