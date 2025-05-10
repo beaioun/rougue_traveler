@@ -31,5 +31,12 @@ A smart travel agent application built with Streamlit that helps users plan thei
 ## Requirements
 
 - Python 3.8+
-- OpenAI API key
+- OpenAI API key, Google Custon Search key, Google Custom Search engine
 - Internet connection
+
+### keys.py
+
+create a file called keys.py
+google_search_key = '<>'
+google_engine = '<>>'
+open_api_key = '<>'
