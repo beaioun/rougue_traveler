@@ -83,7 +83,7 @@ if origin_city and budget and start_date and end_date:
                             st.write(response.get('destinations')[i].values())
                             city_details = st.button("details", key=f"city_details_{i}")
                             imageUrl = location_images.get_image(searchstring=response.get('destinations')[i].get('location'));
-                            st.image(imageUrl, caption=response.get('destinations')[i].get('location'), use_column_width=True)
+                            st.image(imageUrl, caption=response.get('destinations')[i].get('location'))
                     # Display the response
                     if city_details:
                         # TODO: a function to get the itenary for the city
