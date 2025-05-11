@@ -9,6 +9,13 @@ A smart travel agent application built with Streamlit that helps users plan thei
 - Interactive user interface
 - Budget-friendly travel planning
 
+## Requirements
+
+- [Python 3.8+](https://www.python.org/downloads/)
+- [OpenAI API key](https://platform.openai.com/api-keys)
+- [Google Custom Search key](https://developers.google.com/custom-search/v1/introduction#identify_your_application_to_google_with_api_key)
+- Internet connection
+
 ## Setup
 
 1. Clone the repository
@@ -16,27 +23,17 @@ A smart travel agent application built with Streamlit that helps users plan thei
    ```bash
    pip install -r requirements.txt
    ```
-3. Set up Streamlit secrets:
-   - For local development, go to `.streamlit/secrets.toml` file in your project root to modify the Key:
-     ```toml
-     OPENAI_API_KEY = "your_api_key_here"
-     ```
-   - For Streamlit Cloud deployment, add the secret in the dashboard under "Secrets"
-
-4. Run the application:
+3. Run the application:
    ```bash
    streamlit run home.py
    ```
+4. Set up OpenAI API Key and Google Custom Search Key:
+   - Click on "Generate Trip Plan" button
+   - Input the keys into the prompted popup page
+   - Click on "Submit"
+5. Start using the app
 
-## Requirements
 
-- Python 3.8+
-- OpenAI API key, Google Custon Search key, Google Custom Search engine
-- Internet connection
 
-### keys.py
 
-create a file called keys.py
-google_search_key = '<>'
-google_engine = '<>>'
-open_api_key = '<>'
+
